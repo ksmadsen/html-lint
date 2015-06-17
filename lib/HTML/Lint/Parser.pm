@@ -177,11 +177,13 @@ sub _entity {
         $self->{_entity_lookup} = { map { ($_,1) } @entities };
     }
 
-    while ( $text =~ /([^\x09\x0A\x0D -~])/g ) {
+    while ( $text =~ /([^\x09\x0A\x0D -~]|[<>])/g ) {
         my $bad = $1;
+        my $char = $bad =~ /[<>]/ ? $bad : sprintf( '\x%02lX', ord($bad) );
+
         $self->gripe(
             $type . '-use-entity',
-                char => sprintf( '\x%02lX', ord($bad) ),
+                char => $char,
                 entity => $char2entity{ $bad },
         );
     }

@@ -8,6 +8,8 @@ checkit( [
     [ 'text-use-entity'      => qr/Character "&" should be written as &amp;/ ],
     [ 'text-unclosed-entity' => qr/Entity &ouml; is missing its closing semicolon/ ],
     [ 'text-use-entity'      => qr/Character "&" should be written as &amp;/ ],
+    [ 'text-use-entity'      => qr/Character "<" should be written as &lt;/ ],
+    [ 'text-use-entity'      => qr/Character ">" should be written as &gt;/ ],
 ], [<DATA>] );
 
 __DATA__
@@ -36,5 +38,6 @@ __DATA__
         Here in the safety of comments, we can put whatever &invalid; and &malformed entities we want, &
         nobody can stop us.  Except maybe Cheech & Chong.
         -->
+	<>
     </body>
 </html>
